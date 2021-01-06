@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="new_timer", # 
+    name="new_timer",
     version="0.0.1",
     author="Overcomer",
     author_email="newjerusalem0722@gmail.com",
@@ -15,6 +15,7 @@ setuptools.setup(
     keywords="timer",
     python_requires='>=3',
     install_requires=['numpy'],
+    license="GNU Affero General Public License v3",
     packages=setuptools.find_packages(include=["new_timer", "new_timer.*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
