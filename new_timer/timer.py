@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Set logging config.
 FORMAT = '[%(levelname)s] %(message)s'
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
+DATE_FORMAT = '%Y%m%d %H:%M:%S'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT, datefmt=DATE_FORMAT)
 
 
@@ -102,9 +102,9 @@ class ManualTimer(object):
                                                                               self.min[1],
                                                                               np.round(self.min[2], self.__decimal)))
             logging.info("{} cost time mean: {} hours {} mins {} secs.".format(self.__string, 
-                                                                              self.mean[0], 
-                                                                              self.mean[1],
-                                                                              np.round(self.mean[2], self.__decimal)))
+                                                                               self.mean[0], 
+                                                                               self.mean[1],
+                                                                               np.round(self.mean[2], self.__decimal)))
         
         return (hours, minutes, seconds)
 
@@ -213,7 +213,7 @@ class AutoTimer(object):
                                                                          np.round(self.__seconds, self.__decimal)))
 
 
-def get_now_time(format="%Y-%m-%d %H:%M:%S", show=True):
+def get_now_time(format="%Y%m%d %H:%M:%S", show=True):
     """
     Gets current time.
     """
@@ -224,22 +224,3 @@ def get_now_time(format="%Y-%m-%d %H:%M:%S", show=True):
         logging.info("Current time: {}".format(now))
     
     return now
-
-
-if __name__ == "__main__":
-    def circle_area(radius):
-        area = radius ** 2 * 3.14
-        return area
-
-    timer1 = ManualTimer(decimal=2)
-    
-    # for i in range(5):
-    #     timer1.start()
-    #     for i in range(9999):
-    #         print(i)
-    #     timer1.stop()
-
-
-    with AutoTimer():
-        for i in range(9999):
-            print(i)
