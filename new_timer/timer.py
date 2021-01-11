@@ -213,7 +213,7 @@ class AutoTimer(object):
                                                                          np.round(self.__seconds, self.__decimal)))
 
 
-def get_now_time(format="%Y%m%d %H:%M:%S", show=False):
+def get_now_time(format="%Y-%m-%d %H:%M:%S", show=False):
     """
     Gets current time.
     """
