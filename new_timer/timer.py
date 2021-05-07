@@ -4,11 +4,13 @@ import logging
 import numpy as np
 from datetime import datetime
 
-# Set logging config.
-FORMAT = '[%(levelname)s] %(message)s'
-DATE_FORMAT = '%Y%m%d %H:%M:%S'
-logging.basicConfig(level=logging.DEBUG, format=FORMAT, datefmt=DATE_FORMAT)
-
+"""
+If you want to normaly display message, you need to set log format of logging. Follow the example below:
+    # Set logging config.
+    FORMAT = '[%(levelname)s] %(message)s'
+    DATE_FORMAT = '%Y%m%d %H:%M:%S'
+    logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt=DATE_FORMAT)
+"""
 
 class ManualTimer(object):
     """
@@ -151,7 +153,7 @@ class AutoTimer(object):
         from timer import AutoTimer
 
         a = 0
-        with AutoTimer("Pring 0 ~ 9999999", decimal=2)
+        with AutoTimer("Pring 0 ~ 9999999", decimal=2):
             for i in range(9999999):
                 a += i
                 print(a)
