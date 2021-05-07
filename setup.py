@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setuptools.setup(
     name="new_timer",
-    version="0.0.5",
+    version="0.0.7",
     author="Overcomer",
     author_email="newjerusalem0722@gmail.com",
     description="Program timer.",
