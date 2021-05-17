@@ -95,18 +95,21 @@ class ManualTimer(object):
                                                                          minutes,
                                                                          np.round(seconds, self.__decimal)))
         if self.__show_others == True:
-            logging.info("{} cost time max: {} hours {} mins {} secs.".format(self.__string, 
-                                                                              self.max[0], 
-                                                                              self.max[1],
-                                                                              np.round(self.max[2], self.__decimal)))
-            logging.info("{} cost time min: {} hours {} mins {} secs.".format(self.__string, 
-                                                                              self.min[0], 
-                                                                              self.min[1],
-                                                                              np.round(self.min[2], self.__decimal)))
-            logging.info("{} cost time mean: {} hours {} mins {} secs.".format(self.__string, 
-                                                                               self.mean[0], 
-                                                                               self.mean[1],
-                                                                               np.round(self.mean[2], self.__decimal)))
+            logging.info("{} cost time max({} times): {} hours {} mins {} secs.".format(self.__string, 
+                                                                                        len(self.__time_records),
+                                                                                        self.max[0], 
+                                                                                        self.max[1],
+                                                                                        np.round(self.max[2], self.__decimal)))
+            logging.info("{} cost time min({} times): {} hours {} mins {} secs.".format(self.__string, 
+                                                                                        len(self.__time_records),
+                                                                                        self.min[0], 
+                                                                                        self.min[1],
+                                                                                        np.round(self.min[2], self.__decimal)))
+            logging.info("{} cost time mean({} times): {} hours {} mins {} secs.".format(self.__string, 
+                                                                                         len(self.__time_records),
+                                                                                         self.mean[0], 
+                                                                                         self.mean[1],
+                                                                                         np.round(self.mean[2], self.__decimal)))
         
         return (hours, minutes, seconds)
 
