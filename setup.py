@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setuptools.setup(
     name="new_timer",
-    version="0.0.8",
+    version="0.0.9",
     author="Overcomer",
     author_email="newjerusalem0722@gmail.com",
     description="Program timer.",
@@ -15,11 +15,11 @@ setuptools.setup(
     keywords="timer",
     python_requires='>=3',
     install_requires=['numpy'],
-    license="GNU Affero General Public License v3",
+    license="MIT License",
     packages=setuptools.find_packages(include=["new_timer", "new_timer.*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU Affero General Public License v3",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
 
