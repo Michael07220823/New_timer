@@ -28,7 +28,7 @@ class ManualTimer(object):
     ## Example:
         from timer import ManualTimer
 
-        timer1 = ManualTimer(string="Print 0 ~ 9999", decimal=2)
+        timer1 = ManualTimer(name="Print 0 ~ 9999", decimal=2)
 
         for i in range(10):
             timer1.start()
@@ -37,18 +37,18 @@ class ManualTimer(object):
             timer1.stop()
     """
 
-    def __init__(self, string="Program", decimal=12, show=True, show_others=False):
+    def __init__(self, name="Program", decimal=12, show=True, show_others=False):
         """
         Args:
         -----
-        string: Define your timer name.
+        name: Define your timer name.
 
         decimal: Display to a certain number of decimal places
 
         show: Show the elapsed time.
         """
 
-        self.__string = string
+        self.name = name
         self.__decimal = decimal
         self.__show = show
         self.__show_others = show_others
@@ -59,7 +59,13 @@ class ManualTimer(object):
         self.mean = None
         self.__time_records = np.array([])
 
-
+    def set_name(self, name):
+        """
+        Set timer name.
+        """
+        self.name = name
+    
+    
     def start(self):
         """
         Start the timer.
@@ -90,22 +96,22 @@ class ManualTimer(object):
         self.__calc_3_values()
         
         if self.__show == True:
-            logging.info("{} cost time {} hours {} mins {} secs.".format(self.__string, 
+            logging.info("{} cost time {} hours {} mins {} secs.".format(self.name, 
                                                                          hours, 
                                                                          minutes,
                                                                          np.round(seconds, self.__decimal)))
         if self.__show_others == True:
-            logging.info("{} cost time max({} times): {} hours {} mins {} secs.".format(self.__string, 
+            logging.info("{} cost time max({} times): {} hours {} mins {} secs.".format(self.name, 
                                                                                         len(self.__time_records),
                                                                                         self.max[0], 
                                                                                         self.max[1],
                                                                                         np.round(self.max[2], self.__decimal)))
-            logging.info("{} cost time min({} times): {} hours {} mins {} secs.".format(self.__string, 
+            logging.info("{} cost time min({} times): {} hours {} mins {} secs.".format(self.name, 
                                                                                         len(self.__time_records),
                                                                                         self.min[0], 
                                                                                         self.min[1],
                                                                                         np.round(self.min[2], self.__decimal)))
-            logging.info("{} cost time mean({} times): {} hours {} mins {} secs.".format(self.__string, 
+            logging.info("{} cost time mean({} times): {} hours {} mins {} secs.".format(self.name, 
                                                                                          len(self.__time_records),
                                                                                          self.mean[0], 
                                                                                          self.mean[1],
@@ -162,18 +168,18 @@ class AutoTimer(object):
                 print(a)
     """
 
-    def __init__(self, string="Program", decimal=12, show=True):
+    def __init__(self, name="Program", decimal=12, show=True):
         """
         Args:
         -----
-        string: Define your timer name.
+        name: Define your timer name.
 
         decimal: Display to a certain number of decimal places
 
         show: Show the elapsed time.
         """
 
-        self.__string = string
+        self.name = name
         self.__decimal = decimal
         self.__show = show
         self.__hours = 0
@@ -212,7 +218,7 @@ class AutoTimer(object):
             self.__seconds = self.__seconds - self.__hours*3600 - self.__minutes*60
 
         if self.__show == True:
-            logging.info("{} cost time {} hours {} mins {} secs.".format(self.__string, 
+            logging.info("{} cost time {} hours {} mins {} secs.".format(self.name, 
                                                                          self.__hours, 
                                                                          self.__minutes,
                                                                          np.round(self.__seconds, self.__decimal)))
