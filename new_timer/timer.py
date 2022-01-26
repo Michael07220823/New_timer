@@ -49,15 +49,27 @@ class ManualTimer(object):
         """
 
         self.name = name
+        self.__start_time = float()
+        self.__end_time = float()
+        self.__elapsed_time = float()
+
         self.__decimal = decimal
         self.__show = show
         self.__show_others = show_others
 
-        self.__elapsed_seconds = 0.0
         self.max = None
         self.min = None
         self.mean = None
         self.__time_records = np.array([])
+    
+    def start_time(self)-> float:
+        return self.__start_time
+
+    def end_time(self)-> float:
+        return self.__end_time
+
+    def elapsed_time(self)-> float:
+        return self.__elapsed_time
 
     def set_name(self, name):
         """
@@ -85,14 +97,15 @@ class ManualTimer(object):
 
         seconds: elapsed seconds.
         """
-
-        self.__elapsed_seconds = time.time() - self.__start_time
+        
+        self.__end_time = time.time()
+        self.__elapsed_time = self.__end_time - self.__start_time
 
         # Get each time elapsed.
-        self.__time_records = np.append(self.__time_records, self.__elapsed_seconds)
+        self.__time_records = np.append(self.__time_records, self.__elapsed_time)
         logging.debug("self.__time_records: {}".format(self.__time_records))
 
-        hours, minutes, seconds = self.__calc_time(self.__elapsed_seconds)
+        hours, minutes, seconds = self.__calc_time(self.__elapsed_time)
         self.__calc_3_values()
         
         if self.__show == True:
@@ -224,7 +237,7 @@ class AutoTimer(object):
                                                                          np.round(self.__seconds, self.__decimal)))
 
 
-def get_now_time(format="%Y-%m-%d %H:%M:%S", show=False):
+def get_now_time(format="%Y-%m-%d %H:%M:%S.%f", show=False):
     """
     Gets current time.
     """
